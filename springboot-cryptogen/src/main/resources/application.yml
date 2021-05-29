@@ -1,0 +1,63 @@
+spring:
+  profiles:
+    active: mariadb
+    group:
+      mariadb: local-mariadb
+      h2db: local-h2db
+
+# upbit:
+#   accessKey: ${accessKey:NONE}
+#   secretKey: ${secretKey:NONE}
+#   # markets: ${markets:krw-btc}
+#   market: ${market:KRW-BTC}
+#   balance: ${balance:-1.0}
+
+# schedule:
+#   chunkSize: 100  
+#   collectDelay: ${collectDelay:10000} # 시세수집 주기(ms)
+#   analysisDelay: ${analysisDelay:500} # 분석 주기(ms)
+# testParameter:
+#   # 0: 프로그램 시작상태
+#   # 1: 매수 전 
+#   # 10: 매수주문완료, 11: 매수체결
+#   # 20: 매도주문완료
+#   currentStatus: ${currentStatus:0}
+#   skipBidAlgorithm: ${skipBidAlgorithm:false}
+#   skipAskAlgorithm: ${skipAskAlgorithm:false}
+
+# ---
+
+# spring:
+#   config:
+#     activate:
+#       on-profile: local-h2db
+#   jpa:
+#     show-sql: true
+#     properties.hibernate.dialect.storage_engine: innodb
+#   datasource:
+#     hikari:
+#       jdbc-url: jdbc:h2:mem:testdb;MODE=MYSQL
+#       username: rivernine
+#   h2.console:
+#     enabled: true
+#     path: /h2-console
+#     settings.web-allow-others: true
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local-mariadb
+  datasource:
+    url: jdbc:mariadb://172.17.0.1:3306/cryptodb
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: 
+    password: 
+    hikari:
+      connection-timeout: 60000 # 1min
+      maximum-pool-size: 20
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create # 변경된 스키마만 적용 (none/update/validate/create/create-drop)
