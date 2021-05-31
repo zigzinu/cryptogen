@@ -1,0 +1,17 @@
+GET https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=3
+
+###
+
+GET https://api.upbit.com/v1/ticker?markets=KRW-BTC
+
+    "candle_date_time_utc": "2021-05-31T08:48:00",
+    "candle_date_time_kst": "2021-05-31T17:48:00",
+    "opening_price": 42814000.00000000,
+    "high_price": 42844000.00000000,
+    "low_price": 42810000.00000000,
+    "trade_price": 42843000.00000000,
+    "timestamp": 1622450932453,
+    "candle_acc_trade_price": 116514407.19562000,
+    "candle_acc_trade_volume": 2.72104932,
+    "unit": 1
+  },

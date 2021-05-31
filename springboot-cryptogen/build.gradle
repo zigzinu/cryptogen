@@ -22,8 +22,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-batch'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// web
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	// MariaDB
 	implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.2'
+	// http
+	implementation 'org.apache.httpcomponents:httpclient:4.5'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'

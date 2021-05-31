@@ -1,22 +1,33 @@
 package com.zigzinu.cryptogen.scheduler;
 
-import java.util.Date;
+import com.zigzinu.cryptogen.utils.UpbitQuotationApi;
+import com.zigzinu.cryptogen.utils.dto.GetCandlesMinutesResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Component
 public class TestScheduler {
 	
-	final Logger L = LoggerFactory.getLogger(this.getClass());
+	private final UpbitQuotationApi upbitQuotationApi;
 	
-    @Scheduled(fixedDelay = 1000)
+	private final Logger L = LoggerFactory.getLogger(this.getClass());
+	
+    @Scheduled(fixedDelay = 3000)
 	public void alert() {
-        Date d = new Date();
+        GetCandlesMinutesResponse[] response = upbitQuotationApi.getCandles("KRW-BTC", "5", "3");
+		
+		for (GetCandlesMinutesResponse r : response) {
+			r.setCandleStick();
+			L.info("{}", r);
+		}
 
-		L.info("현재 시간 : {}", d);
+		L.info("{}", "");
 	}
 
 }
